@@ -27,10 +27,17 @@
 				</div>
 				<div class="footer__contact"><small>Время работы</small>
 					<div>
-						<span class="d-none d-md-inline">ежедневно</span>
-						<span>с 9-00</span>
-						до
-						<span>18-00</span>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            Array(
+                                "AREA_FILE_RECURSIVE" => "Y",
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/opening_hours.php"
+                            )
+                        );?>
 					</div>
 				</div>
 				<div class="footer__contact">

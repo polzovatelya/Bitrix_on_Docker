@@ -3,27 +3,25 @@
 			<div class="toolbar d-none d-sm-block">
 				<div class="container-lg">
 					<div class="toolbar__list">
-						<div class="toolbar__li dropdown"><a class="toolbar__link" data-bs-toggle="dropdown" href="#" aria-expanded="false">Компания<i class="fa-solid fa-chevron-down ms-2"></i></a>
-							<div class="dropdown-menu" style="">
-								<div><a class="a dropdown-item" href="#">О компании</a></div>
-								<div><a class="a dropdown-item" href="#">Отзывы</a></div>
-								<div><a class="a dropdown-item" href="#">История</a></div>
-								<div><a class="a dropdown-item" href="#">Вакансии</a></div>
-								<div><a class="a dropdown-item" href="#">Миссия и стратегия</a></div>
-								<div><a class="a dropdown-item" href="#">Новости</a></div>
-								<div><a class="a dropdown-item" href="#">Партнерам</a></div>
-								<div><a class="a dropdown-item" href="#">Контакты</a></div>
-								<div><a class="a dropdown-item" href="#">Акции</a></div>
-							</div>
-						</div>
-						<div class="toolbar__li"><a class="toolbar__link" href="#">Новости</a></div>
-						<div class="toolbar__li"><a class="toolbar__link" href="#">Партнерам</a></div>
-						<div class="toolbar__li"><a class="toolbar__link" href="#">Контакты</a></div>
-						<div class="toolbar__li toolbar__li_contact">
-							<a class="toolbar__link" href="tel:8(495)212-85-09">8 (495) 212-85-09</a>
-							<span class="ms-3">с 9-00 до 18-00</span>
-						</div>
-					</div>
+                        <?php $APPLICATION->includeComponent(
+                            "bitrix:menu",
+                            "toolbar",
+                            [
+                                "ALLOW_MULTI_SELECT" => "N",
+                                "CHILD_MENU_TYPE" => "toolbar_submenu",
+                                "DELAY" => "N",
+                                "MAX_LEVEL" => "2",
+                                "MENU_CACHE_GET_VARS" => "",
+                                "MENU_CACHE_TIME" => "3600",
+                                "MENU_CACHE_TYPE" => "N",
+                                "MENU_CACHE_USE_GROUPS" => "Y",
+                                "ROOT_MENU_TYPE" => "toolbar",
+                                "USE_EXT" => "Y",
+                                "COMPONENT_TEMPLATE" => "toolbar",
+                            ],
+                            false
+                        ) ?>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -62,15 +60,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="header__user">
-						<div class="user-thumbnail">
-							<div class="user-thumbnail__control">
-								<a class="btn btn-primary rounded-pill w-100" role="button" href="/login/">
-									Вход<span class="d-none d-lg-inline"> для дилеров</span>
-								</a>
-							</div>
-						</div>
-					</div>
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:main.auth.form", 
+	"header", 
+	[
+		"AUTH_FORGOT_PASSWORD_URL" => "",
+		"AUTH_REGISTER_URL" => "",
+		"AUTH_SUCCESS_URL" => "",
+		"COMPONENT_TEMPLATE" => "header",
+		"AUTH_PAGE" => "/login/",
+		"PERSONAL_PAGE" => "/personal/"
+	],
+	false
+);?>
 				</div>
 				<?php $APPLICATION->IncludeComponent(
 					"bitrix:menu",

@@ -37,8 +37,9 @@ $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
 						],
 						false
 				); ?>
-				<div class="alert alert-info mt-3">
-					Заключение партнерского договора позволит вам вывести бизнес на новый уровень
-				</div>
+
+                    <div class="alert alert-info mt-3">
+                    <?= $APPLICATION->ShowProperty("left_block_content") ?>
+				    </div>
 			</div>
 			<div class="col-12 col-lg-8">
