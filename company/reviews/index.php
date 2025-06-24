@@ -2,9 +2,9 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Отзывы");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:news.list",
-	"reviews",
-	Array(
+	"bitrix:news.list", 
+	"reviews", 
+	[
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
@@ -24,7 +24,14 @@ $APPLICATION->SetTitle("Отзывы");
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array("NAME","TAGS","SORT","PREVIEW_TEXT","PREVIEW_PICTURE",""),
+		"FIELD_CODE" => [
+			0 => "NAME",
+			1 => "TAGS",
+			2 => "SORT",
+			3 => "PREVIEW_TEXT",
+			4 => "PREVIEW_PICTURE",
+			5 => "",
+		],
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "5",
@@ -38,12 +45,17 @@ $APPLICATION->SetTitle("Отзывы");
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TEMPLATE" => "academy",
 		"PAGER_TITLE" => "Новости",
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array("CITY","RATING","EXTERNAL_LINK",""),
+		"PROPERTY_CODE" => [
+			0 => "CITY",
+			1 => "RATING",
+			2 => "EXTERNAL_LINK",
+			3 => "",
+		],
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -55,6 +67,10 @@ $APPLICATION->SetTitle("Отзывы");
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N"
-	)
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => "reviews",
+		"COMPOSITE_FRAME_MODE" => "A",
+		"COMPOSITE_FRAME_TYPE" => "AUTO"
+	],
+	false
 );?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

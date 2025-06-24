@@ -29,13 +29,31 @@ $this->setFrameMode(true);
 				<div class="card-news__date">
 					<?=$arResult["DISPLAY_DATE"]?>
 				</div>
-				<? if (strlen($arResult["FIELDS"]["NAME"])): ?>
+				<?php if (strlen($arResult["FIELDS"]["NAME"])): ?>
 					<div class="card-news__body">
 						<h1 class="card-news__name mt-0 mb-4 fw-normal"><?=$arResult["FIELDS"]["NAME"]?></h1>
 					</div>
-				<? endif ?>
+				<?php endif ?>
 			</div>
 		</div>
 	</div>
 	<?=$arResult["FIELDS"]["DETAIL_TEXT"]?>
+
+    <div class="card-news-links">
+
+        <?php if ($arResult["PREVIOUS"]): ?>
+            <a  class="news-previous btn btn-outline-primary rounded-pill btn-sm"
+                href="<?= $arResult["PREVIOUS"]["DETAIL_PAGE_URL"]?>"
+            >
+                <?=$arResult["PREVIOUS"]["SHORT_NAME"]?>
+            </a>
+        <?php endif ;?>
+        <?php if ($arResult["NEXT"]): ?>
+            <a  class="news-next btn btn-outline-primary rounded-pill btn-sm"
+                href="<?= $arResult["NEXT"]["DETAIL_PAGE_URL"]?>"
+            >
+                <?=$arResult["NEXT"]["SHORT_NAME"]?>
+            </a>
+        <?php endif ;?>
+    </div>
 <?php endif; ?>
