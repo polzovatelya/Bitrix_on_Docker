@@ -2,10 +2,49 @@
 
 namespace MyCompany\Custom\EventHandlers;
 
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Type\DateTime;
 use CEventLog;
 
 class Iblock
 {
+    const NO_DEACTIVATE_NEWS_DAYS = 3;
+
+    static function StopDeactivateNews(&$arFields)
+    {
+        global $APPLICATION;
+        if ($arFields['IBLOCK_ID'] == IBLOCK_NEWS_ID && $arFields['ACTIVE'] == 'N')
+        {
+            $currentValues = ElementTable::getList([
+                'filter' => [
+                    'ID' => $arFields['ID'],
+                ],
+                'select' => [
+                    'ACTIVE',
+                    'DATE_CREATE',
+                ]
+            ])->fetch();
+        }
+        if ($currentValues['ACTIVE'] == 'Y')
+        {
+            $createdDate = $currentValues['DATE_CREATE'];
+            $currentDate = new DateTime();
+            $diffDateTime = $currentDate->getDiff($createdDate);
+        }
+
+        if ($diffDateTime->days < static::NO_DEACTIVATE_NEWS_DAYS){
+            $APPLICATION->ThrowException(Loc::getMessage(
+                "MY_COMPANY_CUSTOM_NO_DEACTIVATE_NEWS_DAYS",
+                [
+                    '#NO_DEACTIVATE_NEWS_DAYS#' => static::NO_DEACTIVATE_NEWS_DAYS,
+                    '#DAYS_LEFT#' => $diffDateTime->days,
+                ]
+            ));
+            return false;
+        }
+    }
+
     static function onNewsAdd($arFields): void
     {
         if ($arFields['IBLOCK_ID'] !== IBLOCK_NEWS_ID)

@@ -22,3 +22,17 @@ $eventManager->addEventHandler('main', 'OnProlog', [
     'MyCompany\Custom\EventHandlers\Main',
     'setIsDevServerConstant'
 ]);
+
+$eventManager->addEventHandler('main', 'OnAdminContextMenuShow',
+    ['MyCompany\Custom\EventHandlers\Main', 'showDetailButton']);
+
+$eventManager->addEventHandler('iblock', 'OnBeforeIblockElementUpdate',
+    ['MyCompany\Custom\EventHandlers\Iblock', 'StopDeactivateNews']);
+
+$eventManager->addEventHandler('iblock', 'OnBeforeUserUpdate',
+    ['MyCompany\Custom\EventHandlers\Iblock', 'fillOldGroup']);
+
+$eventManager->addEventHandler('iblock', 'OnAfterUserUpdate',
+    ['MyCompany\Custom\EventHandlers\Iblock', 'notifyAdmins']);
+
+

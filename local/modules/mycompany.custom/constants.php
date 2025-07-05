@@ -10,3 +10,8 @@ if (!defined('IBLOCK_CATALOG_PROPERTY_PRICE_ID'))
 {
     define('IBLOCK_CATALOG_PROPERTY_ARTNUMBER_ID', 6);
 }
+
+if (!defined('MY_SITE_ID'))
+{
+    define('MY_SITE_ID', 's1');
+}
