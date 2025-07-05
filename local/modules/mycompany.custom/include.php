@@ -35,4 +35,10 @@ $eventManager->addEventHandler('iblock', 'OnBeforeUserUpdate',
 $eventManager->addEventHandler('iblock', 'OnAfterUserUpdate',
     ['MyCompany\Custom\EventHandlers\Iblock', 'notifyAdmins']);
 
+$eventManager->addEventHandler('main', 'OnUserTypeBuildList',
+    ['MyCompany\Custom\Main\GroupBinding', 'getUserTypeDescription']);
+
+$eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList',
+    ['MyCompany\Custom\iblock\GroupBinding', 'getUserTypeDescription']);
+
 
