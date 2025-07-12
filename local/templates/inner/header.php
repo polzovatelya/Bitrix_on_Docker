@@ -14,7 +14,7 @@ $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
 			<div class="breadcrumb-item active">Новости</div>
 		</div>
 	</nav>
-	<h1 class="mt-0 pb-xl-4"><?$APPLICATION->ShowTitle(false)?></h1>
+	<h1 class="mt-0 pb-xl-4"><?$APPLICATION->ShowTitle(false)?> <?$APPLICATION->ShowProperty('news_date_start')?></h1>
 	<div class="mb-5 pb-4">
 		<div class="row justify-content-between">
 			<div class="col-12 col-lg-4 col-xl-3 d-none d-lg-block">
@@ -41,5 +41,6 @@ $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
                     <div class="alert alert-info mt-3">
                     <?= $APPLICATION->ShowProperty("left_block_content") ?>
 				    </div>
+                <?= $APPLICATION->ShowViewContent('news_related_product') ?>
 			</div>
 			<div class="col-12 col-lg-8">
