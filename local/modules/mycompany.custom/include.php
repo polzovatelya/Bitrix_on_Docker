@@ -41,4 +41,7 @@ $eventManager->addEventHandler('main', 'OnUserTypeBuildList',
 $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList',
     ['MyCompany\Custom\iblock\GroupBinding', 'getUserTypeDescription']);
 
+$eventManager->addEventHandler('', 'SearchHistoryOnBeforeAdd',
+    ['MyCompany\Custom\EventHandlers\SearchHistory', 'saveQuerySearchInfo']);
+
 
